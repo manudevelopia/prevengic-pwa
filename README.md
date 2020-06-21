@@ -1,4 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Prevengic PWA
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4837bd39-78a4-4d36-8d8d-474f030ea31f/deploy-status)](https://app.netlify.com/sites/prevengic-pwa/deploys)
+
 
 ## Available Scripts
 
