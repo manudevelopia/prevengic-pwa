@@ -5,20 +5,21 @@ interface TaskCreatorProps {
 }
 
 export const TaskCreator: FC<TaskCreatorProps> = ({onCreate}) => {
-  const [locationSearch, setLocationSearch] = useState('');
-  const disableSearch = locationSearch.trim() === '';
-  const addLocation = () => {
-    onCreate(locationSearch);
-    setLocationSearch('');
+  const [taskTitle, setTaskTitle] = useState('');
+  const disableForm = taskTitle.trim() === '';
+
+  const addTask = () => {
+    onCreate(taskTitle);
+    setTaskTitle('');
   };
 
   return (
     <div>
       <input type="text"
-             value={locationSearch}
-             onChange={e => setLocationSearch(e.target.value)}/>
-      <button type="button" onClick={addLocation}
-              disabled={disableSearch}>create
+             value={taskTitle}
+             onChange={e => setTaskTitle(e.target.value)}/>
+      <button type="button" onClick={addTask}
+              disabled={disableForm}>Add
       </button>
     </div>
   );
