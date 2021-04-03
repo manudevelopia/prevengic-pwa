@@ -1,5 +1,5 @@
 {
-  "name": "my-pwa-ts-app",
+  "name": "taskker-pwa",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
