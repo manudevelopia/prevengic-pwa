@@ -10,7 +10,7 @@ function App() {
   const addTask = (taskTitle: string) => setTasks([{title: taskTitle}, ...tasks]);
 
   useEffect(() => {
-    fetch('http://taskker-api.developia.info/api/tasks/all')
+    fetch('https://taskker-api.herokuapp.com/api/tasks/all')
       .then(response => response.json())
       .then(data => setTasks(data))
       .catch(error => console.log(error));
