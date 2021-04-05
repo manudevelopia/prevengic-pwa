@@ -7,7 +7,8 @@ interface TaskListProps {
 
 function updateDone(e: any) {
   if (e.target.dataset.tid !== undefined) {
-    fetch('https://taskker-api.herokuapp.com/api/tasks/' + e.target.dataset.tid, {method: 'PATCH'})
+    fetch('https://taskker-api.herokuapp.com/api/tasks/' + e.target.dataset.tid,
+      {method: 'PATCH', credentials: 'same-origin'})
       .catch(error => console.log(error));
   }
 }
@@ -17,10 +18,11 @@ export const TaskList: FC<TaskListProps> = ({tasks}) =>
     <ul>
       {tasks.map((task, index) =>
         <li key={index}>
-          <div><input type="radio" data-tid={task.tid} checked={task.done} onChange={e => updateDone(e)}/> {task.title}
+          <div>
+            <input type="radio" data-tid={task.tid} checked={task.done} onChange={e => updateDone(e)}/>
+            {task.title}
           </div>
           <div>{task.description}</div>
-          <div>{task.done}</div>
         </li>
       )}
     </ul>
