@@ -7,7 +7,7 @@ import Task from "./Task";
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
-  const addTask = (taskTitle: string) => setTasks([{title: taskTitle}, ...tasks]);
+  const addTask = (newTask: Task) => setTasks([ newTask, ...tasks]);
 
   useEffect(() => {
     fetch('https://taskker-api.herokuapp.com/api/tasks/all')

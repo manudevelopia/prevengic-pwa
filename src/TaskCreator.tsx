@@ -1,7 +1,8 @@
 import React, {FC, useState} from "react";
+import Task from "./Task";
 
 interface TaskCreatorProps {
-  onCreate: (search: string) => void;
+  onCreate: (search: Task) => void;
 }
 
 export const TaskCreator: FC<TaskCreatorProps> = ({onCreate}) => {
@@ -9,7 +10,7 @@ export const TaskCreator: FC<TaskCreatorProps> = ({onCreate}) => {
   const disableForm = taskTitle.trim() === '';
 
   const addTask = () => {
-    onCreate(taskTitle);
+    onCreate({title: taskTitle});
     setTaskTitle('');
   };
 
