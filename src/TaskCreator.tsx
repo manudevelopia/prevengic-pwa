@@ -6,22 +6,40 @@ interface TaskCreatorProps {
 }
 
 export const TaskCreator: FC<TaskCreatorProps> = ({onCreate}) => {
-  const [taskTitle, setTaskTitle] = useState('');
-  const disableForm = taskTitle.trim() === '';
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const disableForm = title.trim() === '';
 
   const addTask = () => {
-    onCreate({title: taskTitle});
-    setTaskTitle('');
+    onCreate(buildTask());
+    cleanForm();
   };
+
+  function buildTask() {
+    return {
+      title: title,
+      description: description
+    };
+  }
+
+  function cleanForm() {
+    setTitle('');
+    setDescription('');
+  }
 
   return (
     <div>
-      <input type="text"
-             value={taskTitle}
-             onChange={e => setTaskTitle(e.target.value)}/>
-      <button type="button" onClick={addTask}
-              disabled={disableForm}>Add
-      </button>
+      <form>
+        <input type="text"
+               value={title} placeholder={'title'}
+               onChange={e => setTitle(e.target.value)}/>
+        <input type="text"
+               value={description} placeholder={'description'}
+               onChange={e => setDescription(e.target.value)}/>
+        <button type="button" onClick={addTask}
+                disabled={disableForm}>Add
+        </button>
+      </form>
     </div>
   );
 }
