@@ -2,7 +2,7 @@ import React, {FC, useState} from "react";
 import Task from "./Task";
 
 interface TaskCreatorProps {
-  onCreate: (search: Task) => void;
+  onCreate: (task: Task) => void;
 }
 
 export const TaskCreator: FC<TaskCreatorProps> = ({onCreate}) => {
@@ -11,7 +11,11 @@ export const TaskCreator: FC<TaskCreatorProps> = ({onCreate}) => {
   const disableForm = title.trim() === '';
 
   const addTask = () => {
-    onCreate(buildTask());
+    const task = buildTask();
+    fetch('https://taskker-api.herokuapp.com/api/tasks',
+      {method: 'POST', body: JSON.stringify(task)})
+      .catch(error => console.log(error));
+    onCreate(task);
     cleanForm();
   };
 
