@@ -10,8 +10,7 @@ export const TaskList: FC<TaskListProps> = ({tasks}) =>
     <ul>
       {tasks.map((task, index) =>
         <li key={index}>
-          <div>{task.tid}</div>
-          <div>{task.title}</div>
+          <div><input type="radio" checked={task.done}/> {task.title}</div>
           <div>{task.description}</div>
           <div>{task.done}</div>
         </li>

@@ -7,14 +7,16 @@ import Task from "./Task";
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
-  const addTask = (newTask: Task) => setTasks([ newTask, ...tasks]);
+  const addTask = () => getTasks();
 
-  useEffect(() => {
+  function getTasks() {
     fetch('https://taskker-api.herokuapp.com/api/tasks/all')
       .then(response => response.json())
       .then(data => setTasks(data))
       .catch(error => console.log(error));
-  }, []);
+  }
+
+  useEffect(() => getTasks(), []);
 
   return (
     <div className="container">
